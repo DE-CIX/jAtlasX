@@ -9,7 +9,7 @@ In particular jAtlasX it has the following capabilities:
 
 
 ## Usage
-Learn how to get started with jAtlasX.
+Learn how to get started with jAtlasX. For a complete code example take a look at the class *MeasurementExample.java* in *src/test/java/net/decix/jatlasx/test/*
 
 ### Installation
 jAtlasX is distributed as a maven project. You can just check it out and import it into your IDE of choice. For getting started with how to use individual classes have a look at the tests included into the project. 
