@@ -11,21 +11,19 @@
  */
 package net.decix.jatlasx.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
+import junit.framework.TestCase;
 import net.decix.jatlasx.csv.CsvReader;
 import net.decix.jatlasx.data.IpAddress;
 import net.decix.jatlasx.ripe.atlas.api.ProbeGathering;
 import net.decix.jatlasx.ripe.atlas.json.Probe;
 
-public class ProbeReceiverTest {
+public class ProbeReceiverTest extends TestCase {
 
 	@Test
 	public void testProbeGathering() {
@@ -48,13 +46,13 @@ public class ProbeReceiverTest {
 		// ProbeList for Method gatherProbesByASN
 		List<Probe> probeIDListfromgatherProbesByASN = new ArrayList<Probe>();
 
-		// Write the Probes to Csv
+		// Write the Probes to csv
 		for (Long asn : asnList) {
 			ProbeGathering.gatherProbesByASNtoCsv(asn, fileName, 20);
 			probeIDListfromgatherProbesByASN.addAll(ProbeGathering.gatherProbesByASN(asn));
 		}
 
-		// Read probeID and probeIpAdresses from Csv
+		// Read probeID and probeIpAdresses from csv
 		CsvReader probeReader = new CsvReader(fileName);
 		List<String> probeIDList = probeReader.getColumn("probe_id");
 		List<String> probeIpAddressList = probeReader.getColumn("ip_address");
@@ -64,7 +62,7 @@ public class ProbeReceiverTest {
 			assertFalse(true);
 		}
 
-		// Check if IP in Csv is the same as Method gatherProbeIPbyID
+		// Check if IP in csv is the same as Method gatherProbeIPbyID
 		for (int i = 0; i < probeIDList.size(); i++) {
 			Long probeID = Long.valueOf(probeIDList.get(i));
 			IpAddress probeIp = ProbeGathering.gatherProbeIPbyID(probeID);
@@ -73,7 +71,7 @@ public class ProbeReceiverTest {
 			assertEquals(probeIpAddressList.get(i), stringProbeIp);
 		}
 
-		// Check if ID in Csv ist the same as Method gatherProbesByASN
+		// Check if ID in csv is the same as Method gatherProbesByASN
 		for (int i = 0; i < probeIDList.size(); i++) {
 			assertEquals(probeIDList.get(i), probeIDListfromgatherProbesByASN.get(i).getValue());
 		}

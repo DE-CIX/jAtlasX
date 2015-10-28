@@ -11,7 +11,6 @@
  */
 package net.decix.jatlasx.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
@@ -20,9 +19,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.Test;
 
+import junit.framework.TestCase;
 import net.decix.jatlasx.data.UniqueID;
 
-public class UniqueIDTest {
+public class UniqueIDTest extends TestCase {
 
 	@Test
 	public void testUniqueID() {

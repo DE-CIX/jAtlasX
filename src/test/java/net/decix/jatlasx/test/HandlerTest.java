@@ -38,8 +38,6 @@ public class HandlerTest extends TestCase {
 	@Test
 	public void testHandler_Interface() {
 
-		boolean receivedData = true;
-
 		ResponseHandler<Long> handler1 = new MeasurementIDHandler();
 		ResponseHandler<IpAddress> handler2 = new ProbeHandler();
 		ResponseHandler<Probe> handler3 = new ProbeListHandler(2337);
@@ -53,8 +51,6 @@ public class HandlerTest extends TestCase {
 		assertEquals(handler4.getClass().getSimpleName(), "TraceHandler");
 		assertEquals(handler5.getClass().getSimpleName(), "TracerouteHandler");
 		assertEquals(handler6.getClass().getSimpleName(), "TracesHandler");
-
-		assertTrue(receivedData);
 	}
 
 	@Test

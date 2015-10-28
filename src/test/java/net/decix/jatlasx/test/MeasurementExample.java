@@ -28,30 +28,24 @@ public class MeasurementExample {
 
 	public static void main(String[] args) throws UnknownHostException, ApiKeyException {
 
-		Long measurementID = null;
 		Measurement simpleMeasurement = new TracerouteMeasurement(apiKey);
-		measurementID = simpleMeasurement.createMeasurement(21931L, "8.8.8.8", "jAtlasX_test_measurement");
+		Long probeID = 21931L;
+		Long measurementID = simpleMeasurement.createMeasurement(probeID, "8.8.8.8", "jAtlasX_test_measurement");
 		System.out.println("MeasurementID: " + measurementID);
 
 		// Uncomment to view sampleMeasurement
-		// measurementID = 2852412L;
+		// Long measurementID = 2863406L;
 
 		List<TraceroutePath> pathes = MeasurementGathering.getMeasurementResultsbyID(measurementID);
 
+		IpRange ipRangeOfDecix = new IpRange("DE-CIX", "80.81.192.0", "80.81.195.255");
+		if (pathes.isEmpty()) {
+			System.err.println("Measurement results are not yet available. Try again some minutes later");
+		}
 		for (TraceroutePath path : pathes) {
 			System.out.println(path.toString());
-			List<Integer> resultdecix = path.checkIpRange(new IpRange("80.81.192.0", "80.81.195.255"));
-			if (resultdecix.isEmpty()) {
-				System.out.println("DE-CIX not on the path");
-			} else {
-				System.out.println(resultdecix + " DE-CIX on the path");
-			}
-			List<Integer> resultamsix = path.checkIpRange(new IpRange("80.249.208.0", "80.249.215.255"));
-			if (resultamsix.isEmpty()) {
-				System.out.println("AMS-IX not on the path");
-			} else {
-				System.out.println(resultdecix + " AMS-IX on the path");
-			}
+			List<Integer> checkForDecix = path.checkIpRange(ipRangeOfDecix);
+			System.out.println(ipRangeOfDecix.getName() + " was found on this trace route: " + !checkForDecix.isEmpty());
 		}
 	}
 }

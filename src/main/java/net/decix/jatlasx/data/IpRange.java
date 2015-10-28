@@ -17,19 +17,26 @@ public class IpRange {
 
 	private IpAddress start;
 	private IpAddress end;
+	private String name;
 
-	public IpRange(IpAddress start, IpAddress end) {
+	public IpRange(String name, IpAddress start, IpAddress end) {
 		this.start = start;
 		this.end = end;
+		this.name = name;
 	}
 
-	public IpRange(String start, String end) throws UnknownHostException {
+	public IpRange(String name, String start, String end) throws UnknownHostException {
 		this.start = new IpAddress(start);
 		this.end = new IpAddress(end);
+		this.name = name;
 	}
 
 	public boolean isInRange(IpAddress address) {
 		return (start.getLong() <= address.getLong() && end.getLong() >= address.getLong());
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

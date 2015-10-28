@@ -14,15 +14,15 @@ package net.decix.jatlasx.test;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import net.decix.jatlasx.data.IpRange;
 import net.decix.jatlasx.data.TraceroutePath;
 import net.decix.jatlasx.ripe.atlas.api.MeasurementGathering;
 
-public class MeasurementReceiverTest {
+public class MeasurementReceiverTest extends TestCase {
 
-	static String parameter = "2075058/result/?&format=json";
 	boolean printResults = false;
 
 	@Test
@@ -34,8 +34,8 @@ public class MeasurementReceiverTest {
 				System.out.println("TEST (MeasurementReceiverTest) - Path: " + "path");
 			}
 			try {
-				path.checkIpRange(new IpRange("80.81.192.0", "80.81.195.255"));
-				path.checkIpRange(new IpRange("80.249.208.0", "80.249.215.255"));
+				assertTrue(path.checkIpRange(new IpRange("DE-CIX","80.81.192.0", "80.81.195.255")).isEmpty());
+				assertTrue(path.checkIpRange(new IpRange("AMS-IX","80.249.208.0", "80.249.215.255")).isEmpty());
 			} catch (UnknownHostException e) {
 				String errorMsg = "Could not create IP-addresses";
 				System.err.println(e.getClass().getName() + ":" + errorMsg + "(" + this.getClass().getName() + ")");
