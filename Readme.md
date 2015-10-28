@@ -7,7 +7,6 @@ In particular jAtlasX has the following capabilities:
 2. Query probe information by ASN 
 3. Parse JSON measurement replies
 
-
 ## Usage
 Learn how to get started with jAtlasX. For a complete code example take a look at the class *MeasurementExample.java* in *src/test/java/net/decix/jatlasx/test/*
 
