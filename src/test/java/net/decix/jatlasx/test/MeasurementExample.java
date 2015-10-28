@@ -30,6 +30,7 @@ public class MeasurementExample {
 
 		Measurement simpleMeasurement = new TracerouteMeasurement(apiKey);
 		Long probeID = 21931L;
+		
 		Long measurementID = simpleMeasurement.createMeasurement(probeID, "8.8.8.8", "jAtlasX_test_measurement");
 		System.out.println("MeasurementID: " + measurementID);
 
@@ -37,7 +38,7 @@ public class MeasurementExample {
 		// Long measurementID = 2863406L;
 
 		List<TraceroutePath> pathes = MeasurementGathering.getMeasurementResultsbyID(measurementID);
-
+		
 		IpRange ipRangeOfDecix = new IpRange("DE-CIX", "80.81.192.0", "80.81.195.255");
 		if (pathes.isEmpty()) {
 			System.err.println("Measurement results are not yet available. Try again some minutes later");
