@@ -14,8 +14,6 @@ package net.decix.jatlasx.data;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.decix.jatlasx.ripe.atlas.json.Probe;
-
 public class ProbeList {
 
 	private List<Probe> sources;
@@ -61,8 +59,8 @@ public class ProbeList {
 		StringBuilder str = new StringBuilder();
 
 		for (int i = 0; i < sources.size(); i++) {
-			str.append(sources.get(i).getAsn()).append(" | ID: ").append(sources.get(i).getValue()).append("->")
-					.append(destinations.get(i).getAsn()).append(" | ID: ").append(destinations.get(i).getValue())
+			str.append(sources.get(i).getAsn()).append(" | ID: ").append(sources.get(i).getId()).append("->")
+					.append(destinations.get(i).getAsn()).append(" | ID: ").append(destinations.get(i).getId())
 					.append("\n");
 		}
 

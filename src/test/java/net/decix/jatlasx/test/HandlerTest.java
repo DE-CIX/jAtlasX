@@ -20,6 +20,7 @@ import org.junit.Test;
 
 import junit.framework.TestCase;
 import net.decix.jatlasx.data.IpAddress;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.data.TraceroutePath;
 import net.decix.jatlasx.ripe.atlas.api.MeasurementGathering;
 import net.decix.jatlasx.ripe.atlas.api.handler.MeasurementIDHandler;
@@ -29,7 +30,6 @@ import net.decix.jatlasx.ripe.atlas.api.handler.ResponseHandler;
 import net.decix.jatlasx.ripe.atlas.api.handler.TraceHandler;
 import net.decix.jatlasx.ripe.atlas.api.handler.TracerouteHandler;
 import net.decix.jatlasx.ripe.atlas.api.handler.TracesHandler;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class HandlerTest extends TestCase {
 

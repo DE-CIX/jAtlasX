@@ -13,8 +13,8 @@ package net.decix.jatlasx.test;
 
 import java.util.List;
 
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.ripe.atlas.api.ProbeGathering;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class ProbeGatheringExample {
 

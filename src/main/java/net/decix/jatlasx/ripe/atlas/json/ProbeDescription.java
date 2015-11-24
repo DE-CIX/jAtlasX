@@ -13,6 +13,8 @@ package net.decix.jatlasx.ripe.atlas.json;
 
 import java.util.LinkedList;
 
+import net.decix.jatlasx.data.Probe;
+
 public class ProbeDescription {
 
 	private final String TARGET;

@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.ripe.atlas.api.ApiKeys;
 
 public class JsonProbeBuilder extends JsonBuilder {
@@ -57,7 +58,7 @@ public class JsonProbeBuilder extends JsonBuilder {
 			JSONObject jsonProbe = new JSONObject();
 			jsonProbe.put(ApiKeys.tags, currentProbe.getTags());
 			jsonProbe.put(ApiKeys.type, currentProbe.getType());
-			jsonProbe.put(ApiKeys.value, currentProbe.getValue());
+			jsonProbe.put(ApiKeys.value, currentProbe.getId());
 			jsonProbe.put(ApiKeys.requested, currentProbe.getRequested());
 			probes.add(jsonProbe);
 		}

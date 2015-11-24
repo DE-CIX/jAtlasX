@@ -9,24 +9,22 @@
  * This software is licensed under the Apache License, version 2.0. A copy of 
  * the license agreement is included in this distribution.
  */
-package net.decix.jatlasx.ripe.atlas.json;
+package net.decix.jatlasx.data;
 
 import org.json.JSONObject;
-
-import net.decix.jatlasx.data.IpAddress;
 
 public class Probe {
 
 	private JSONObject tags;
 	private String type;
-	private String value;
+	private String id;
 	private int requested;
 	private long asn;
 	private IpAddress ipAddress;
 
 	public Probe(String type, Long value, int requested) {
 		this.type = type;
-		this.value = String.valueOf(value);
+		this.id = String.valueOf(value);
 		this.requested = requested;
 		tags = new JSONObject();
 	}
@@ -55,8 +53,8 @@ public class Probe {
 		return type;
 	}
 
-	public String getValue() {
-		return value;
+	public String getId() {
+		return id;
 	}
 
 	public int getRequested() {
@@ -65,7 +63,7 @@ public class Probe {
 
 	@Override
 	public String toString() {
-		return "[Probe ID: " + value + "; Type: " + type + "; Requested: " + requested + "]";
+		return "[Probe ID: " + id + "; Type: " + type + "; Requested: " + requested + "]";
 	}
 
 }

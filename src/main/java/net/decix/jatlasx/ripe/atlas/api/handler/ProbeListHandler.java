@@ -19,8 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.decix.jatlasx.data.IpAddress;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.ripe.atlas.api.ApiKeys;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class ProbeListHandler implements ResponseHandler<Probe> {
 

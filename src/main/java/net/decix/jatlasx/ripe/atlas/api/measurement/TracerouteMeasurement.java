@@ -15,10 +15,10 @@ import java.net.UnknownHostException;
 import java.util.List;
 
 import net.decix.jatlasx.data.IpAddress;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.ripe.atlas.api.handler.MeasurementIDHandler;
 import net.decix.jatlasx.ripe.atlas.api.handler.ResponseHandler;
 import net.decix.jatlasx.ripe.atlas.json.JsonProbeBuilder;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 import net.decix.jatlasx.ripe.atlas.json.ProbeDescription;
 import net.decix.jatlasx.ripe.atlas.json.ProbeDescriptionBuilder;
 

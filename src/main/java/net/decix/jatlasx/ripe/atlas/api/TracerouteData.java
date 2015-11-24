@@ -21,10 +21,10 @@ import java.util.Set;
 import net.decix.jatlasx.csv.CsvReader;
 import net.decix.jatlasx.csv.CsvWriter;
 import net.decix.jatlasx.csv.Header;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.data.ProbeList;
 import net.decix.jatlasx.data.Traceroute;
 import net.decix.jatlasx.data.UniqueID;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class TracerouteData {
 
@@ -99,14 +99,14 @@ public class TracerouteData {
 
 						Probe sourceProbe = probeList.getSources().get(y);
 						Probe destinationProbe = probeList.getDestinations().get(y);
-						traceWriter.write(new Traceroute(sourceProbe.getAsn(), Long.valueOf(sourceProbe.getValue()),
+						traceWriter.write(new Traceroute(sourceProbe.getAsn(), Long.valueOf(sourceProbe.getId()),
 								sourceProbe.getIpAddress(), destinationProbe.getAsn(),
-								Long.valueOf(destinationProbe.getValue()), destinationProbe.getIpAddress(), asnConnect,
+								Long.valueOf(destinationProbe.getId()), destinationProbe.getIpAddress(), asnConnect,
 								connection_num, 0, asnConnection_num, String.valueOf(id)));
 						id++;
 						traceWriter.write(new Traceroute(destinationProbe.getAsn(),
-								Long.valueOf(destinationProbe.getValue()), destinationProbe.getIpAddress(),
-								sourceProbe.getAsn(), Long.valueOf(sourceProbe.getValue()), sourceProbe.getIpAddress(),
+								Long.valueOf(destinationProbe.getId()), destinationProbe.getIpAddress(),
+								sourceProbe.getAsn(), Long.valueOf(sourceProbe.getId()), sourceProbe.getIpAddress(),
 								asnConnect, connection_num, 1, asnConnection_num, String.valueOf(id)));
 
 						connection_num++;

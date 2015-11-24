@@ -20,8 +20,8 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import net.decix.jatlasx.csv.CsvReader;
 import net.decix.jatlasx.data.IpAddress;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.ripe.atlas.api.ProbeGathering;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class ProbeReceiverTest extends TestCase {
 
@@ -73,7 +73,7 @@ public class ProbeReceiverTest extends TestCase {
 
 		// Check if ID in csv is the same as Method gatherProbesByASN
 		for (int i = 0; i < probeIDList.size(); i++) {
-			assertEquals(probeIDList.get(i), probeIDListfromgatherProbesByASN.get(i).getValue());
+			assertEquals(probeIDList.get(i), probeIDListfromgatherProbesByASN.get(i).getId());
 		}
 
 		if (fileExists) {

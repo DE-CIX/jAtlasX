@@ -17,11 +17,11 @@ import java.util.List;
 import net.decix.jatlasx.csv.CsvWriter;
 import net.decix.jatlasx.csv.Header;
 import net.decix.jatlasx.data.IpAddress;
+import net.decix.jatlasx.data.Probe;
 import net.decix.jatlasx.data.ProbeInformation;
 import net.decix.jatlasx.ripe.atlas.api.handler.ProbeHandler;
 import net.decix.jatlasx.ripe.atlas.api.handler.ProbeListHandler;
 import net.decix.jatlasx.ripe.atlas.http.HttpSubmitter;
-import net.decix.jatlasx.ripe.atlas.json.Probe;
 
 public class ProbeGathering {
 
@@ -39,7 +39,7 @@ public class ProbeGathering {
 			for (Probe probe : probes) {
 				if (index < numEntries) {
 					probeWriter.write(
-							new ProbeInformation(Long.valueOf(probe.getValue()), probe.getAsn(), probe.getIpAddress()));
+							new ProbeInformation(Long.valueOf(probe.getId()), probe.getAsn(), probe.getIpAddress()));
 					index++;
 				}
 			}
