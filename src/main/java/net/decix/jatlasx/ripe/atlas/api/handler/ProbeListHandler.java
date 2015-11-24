@@ -39,30 +39,33 @@ public class ProbeListHandler implements ResponseHandler<Probe> {
 
 		for (int i = 0; i < probeListArray.length(); i++) {
 			JSONObject probeObj = (JSONObject) probeListArray.get(i);
-			
-			String ipAddress = String.valueOf(probeObj.get(ApiKeys.ipv4));
-			Long id = (Long) probeObj.getLong(ApiKeys.id);
-			boolean isPublic = (Boolean) probeObj.get(ApiKeys.isPublic);
-			Long asNum = 0L;
-			if (!probeObj.get(ApiKeys.asn).equals(null)){
-				asNum = (Long) probeObj.getLong(ApiKeys.asn);
-			} else {
-				// Ignore probe if asNum is not specified
-				continue;
-			}
-			
-			String status = (String) probeObj.get(ApiKeys.status);
-			// only select probes which provide an IPv4 address
-			if (ipAddress != null && asn == asNum && status.equals("Connected") && isPublic) {
-				Probe newProbe = new Probe(ApiKeys.probes, id, 1);
-				newProbe.setAsn(asNum);
-				try {
-					newProbe.setIpAddress(new IpAddress(ipAddress));
-				} catch (UnknownHostException e) {
-					String errorMsg = "Could not create IP-address:" + ipAddress;
-					System.err.println(e.getClass().getName() + ":" + errorMsg + "(" + this.getClass().getName() + ")");
+			// a probe has to have an IPv4 address
+			if (!probeObj.get(ApiKeys.ipv4).equals(null)) {
+				String ipAddress = String.valueOf(probeObj.get(ApiKeys.ipv4));
+				Long id = (Long) probeObj.getLong(ApiKeys.id);
+				boolean isPublic = (Boolean) probeObj.get(ApiKeys.isPublic);
+				Long asNum = 0L;
+				if (!probeObj.get(ApiKeys.asn).equals(null)) {
+					asNum = (Long) probeObj.getLong(ApiKeys.asn);
+				} else {
+					// Ignore probe if asNum is not specified
+					continue;
 				}
-				probes.add(newProbe);
+
+				String status = (String) probeObj.get(ApiKeys.status);
+				// only select probes which provide an IPv4 address
+				if (ipAddress != null && asn == asNum && status.equals("Connected") && isPublic) {
+					Probe newProbe = new Probe(ApiKeys.probes, id, 1);
+					newProbe.setAsn(asNum);
+					try {
+						newProbe.setIpAddress(new IpAddress(ipAddress));
+					} catch (UnknownHostException e) {
+						String errorMsg = "Could not create IP-address:" + ipAddress;
+						System.err.println(
+								e.getClass().getName() + ":" + errorMsg + "(" + this.getClass().getName() + ")");
+					}
+					probes.add(newProbe);
+				}
 			}
 		}
 		return probes;
